@@ -1,4 +1,4 @@
-package com.example.crikstatsassignment
+package com.example.crikstatsassignment.feature_player
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -8,12 +8,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import com.example.crikstatsassignment.ui.navigation.AppNavigation
 import com.example.crikstatsassignment.ui.theme.CrikStatsAssignmentTheme
 import dagger.hilt.android.AndroidEntryPoint
 
-@AndroidEntryPoint // <-- ADD THIS
-class MainActivity : ComponentActivity() {
+@AndroidEntryPoint // <-- Must be annotated for Hilt
+class PlayerStatsActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -23,8 +22,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    // Set up the navigation graph
-                    AppNavigation()
+                    PlayerStatsScreen(
+                        onBackClicked = { finish() } // [cite: 59, 78]
+                    )
                 }
             }
         }

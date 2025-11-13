@@ -1,28 +1,21 @@
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.dynamic.feature)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    // --- ADD BELOW ---
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.kapt)
 }
 
 android {
-    namespace = "com.example.crikstatsassignment"
+    namespace = "com.example.crikstatsassignment.feature_player"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "com.example.crikstatsassignment"
         minSdk = 24
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes
-    {
+    buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -32,7 +25,6 @@ android {
         }
     }
     compileOptions {
-
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
@@ -42,12 +34,12 @@ android {
     buildFeatures {
         compose = true
     }
-    // --- ADD THIS BLOCK ---
-    dynamicFeatures = mutableSetOf(":feature-player")
 }
 
 dependencies {
+    implementation(project(":app"))
 
+    // Compose
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -56,16 +48,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
 
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
-
-    // --- ADD BELOW ---
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
@@ -74,15 +57,16 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.hilt.navigation.compose)
 
-    // Play Core API for DFM
-    implementation(libs.play.core)
-
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
     implementation(libs.kotlinx.coroutines.core)
 
-    // Retrofit & Moshi (for mock API)
-    implementation(libs.retrofit)
-    implementation(libs.retrofit.converter.moshi)
-    implementation(libs.moshi)
+    // Test
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 }
