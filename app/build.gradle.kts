@@ -2,7 +2,6 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    // --- ADD BELOW ---
     alias(libs.plugins.hilt)
     alias(libs.plugins.kotlin.kapt)
 }
@@ -23,8 +22,7 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    // --- FIX 1 ---
-    // 'buildTypes' and '{' MUST be on the same line.
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -37,34 +35,28 @@ android {
         }
     }
 
-    // --- FIX 2 ---
-    // 'compileOptions' must NOT have an equals sign.
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
 
-    // --- FIX 3 ---
-    // 'kotlinOptions' must NOT have an equals sign.
+
     kotlinOptions {
         jvmTarget = "11"
     }
 
-    // --- FIX 4 ---
-    // 'buildFeatures' must NOT have an equals sign.
+
     buildFeatures {
         compose = true
     }
 
-    // This is correct (it needs the equals sign)
-    dynamicFeatures.add(":feature-player")
-}
+    dynamicFeatures.add(":feature_player")}
 
-// --- FIX 5 ---
-// 'dependencies' must NOT have an equals sign.
+
 dependencies {
 
-    implementation(libs.androidx.core.ktx) // This is line 57, it was never the problem
+    implementation(libs.androidx.core.ktx)
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -73,6 +65,7 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+    implementation(libs.androidx.media3.exoplayer)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 
@@ -81,8 +74,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(libs.androidx.material.icons.extended)
 
-    // --- ADD BELOW ---
     // Hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)

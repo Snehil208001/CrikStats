@@ -19,18 +19,15 @@ fun AppNavigation() {
         composable("home") {
             HomeScreen(
                 onNavigateToPlayerStats = {
-                    // Navigate to the activity in the feature module
                     try {
                         val intent = Intent(context, Class.forName(PLAYER_STATS_ACTIVITY))
                         context.startActivity(intent)
                     } catch (e: Exception) {
-                        // Handle exception if module is not available
                         e.printStackTrace()
                     }
                 }
             )
         }
-        // Note: The player_stats screen is in a separate activity
-        // in the feature module, as per the assignment's user flow.
+
     }}
 
