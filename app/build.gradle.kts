@@ -19,11 +19,13 @@ android {
         versionName = "1.0"
 
 
+
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
-    buildTypes
-    {
+    // --- FIX 1 ---
+    // 'buildTypes' and '{' MUST be on the same line.
+    buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(
@@ -31,26 +33,38 @@ android {
                 "proguard-rules.pro"
             )
 
+
         }
     }
-    compileOptions {
 
+    // --- FIX 2 ---
+    // 'compileOptions' must NOT have an equals sign.
+    compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+
+    // --- FIX 3 ---
+    // 'kotlinOptions' must NOT have an equals sign.
     kotlinOptions {
         jvmTarget = "11"
     }
+
+    // --- FIX 4 ---
+    // 'buildFeatures' must NOT have an equals sign.
     buildFeatures {
         compose = true
     }
-    // --- ADD THIS BLOCK ---
-    dynamicFeatures = mutableSetOf(":feature-player")
+
+    // This is correct (it needs the equals sign)
+    dynamicFeatures.add(":feature-player")
 }
 
+// --- FIX 5 ---
+// 'dependencies' must NOT have an equals sign.
 dependencies {
 
-    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.ktx) // This is line 57, it was never the problem
 
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -78,7 +92,6 @@ dependencies {
     implementation(libs.hilt.navigation.compose)
 
     // Play Core API for DFM
-
     implementation(libs.play.core)
 
     // Coroutines

@@ -32,5 +32,5 @@ fun AppNavigation() {
         }
         // Note: The player_stats screen is in a separate activity
         // in the feature module, as per the assignment's user flow.
-    }
+    }}
 
