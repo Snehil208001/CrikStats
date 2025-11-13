@@ -217,3 +217,7 @@ Dynamic feature activity opens → data loads → success
 ✔ On-demand module download
 ✔ MVVM + Repository
 ✔ README.md (you are reading it)
+
+![WhatsApp Image 2025-11-13 at 16 03 08_485b7b15](https://github.com/user-attachments/assets/3ecda139-257c-4f9c-9bab-a09d49bbf760)
+
+![WhatsApp Image 2025-11-13 at 16 03 34_c91a6205](https://github.com/user-attachments/assets/ef91ce89-2507-4efb-b291-695ed5f2c429)
